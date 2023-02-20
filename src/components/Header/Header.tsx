@@ -1,26 +1,14 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
-import Divider from '@mui/material/Divider';
-import Drawer from '@mui/material/Drawer';
-import IconButton from '@mui/material/IconButton';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
+import { Box, Typography, Divider, List, ListItem, ListItemButton, ListItemText, CssBaseline, AppBar, Toolbar, IconButton, Button, Drawer } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+
 
 const drawerWidth = 270;
 const navItems = ['Home', 'News', 'Contact'];
 
 export const Header: FC = (): JSX.Element => {
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = useState<boolean>(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -29,7 +17,7 @@ export const Header: FC = (): JSX.Element => {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        The Ukraine Post
+        The Worldwide Post
       </Typography>
       <Divider />
       <List>
@@ -45,9 +33,9 @@ export const Header: FC = (): JSX.Element => {
   );
 
   return (
-    <Box sx={{ display: 'flex'}}>
+    <Box sx={{ display: 'flex', marginBottom: '100px'}}>
       <CssBaseline />
-      <AppBar component="nav" position="sticky">
+      <AppBar component="nav" position="fixed" sx={{backgroundColor: 'orange'}}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -63,7 +51,7 @@ export const Header: FC = (): JSX.Element => {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            The Ukraine Post
+            The Worldwide Post
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
