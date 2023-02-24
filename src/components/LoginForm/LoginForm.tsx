@@ -1,51 +1,71 @@
+import style from './LoginForm.module.scss'
+
 import { FC, useEffect, useState } from 'react'
 
-import { FormControl, TextField, Button, FormHelperText } from '@mui/material';
-import { useAppDispatch, useAppSelector } from '../../store/store';
-import { loggingin } from '../../store/profilePageSlice';
+import { useNavigate } from 'react-router-dom'
+
+import { ICredentials } from '../../types/index'
+
+import { useForm, SubmitHandler } from 'react-hook-form'
+
+import { TextField, Button, Alert } from '@mui/material'
+
+import { useAppDispatch, useAppSelector } from '../../store/store'
+
+import { signIn, setShowSignIn } from '../../store/profilePageSlice'
 
 export const LoginForm: FC = (): JSX.Element => {
-  const dispatch = useAppDispatch()
-  const logged = useAppSelector(state => state.profilePageSlice.logged)
-  const login = useAppSelector(state => state.profilePageSlice.login)
-  const password = useAppSelector(state => state.profilePageSlice.password)
+  const { register, handleSubmit } = useForm<ICredentials>({mode: 'onBlur'})
+
+  const usernameCred = useAppSelector(state => state.profilePageSlice.username)
+  const passwordCred = useAppSelector(state => state.profilePageSlice.password)
+
   const [error, setError] = useState<boolean>(false)
-  const [userLogin, setUserLogin] = useState<string>('')
-  const [userPassword, setUserPassword] = useState<string>('')
 
-  console.log(logged)
+  const navigate = useNavigate()
 
-  const onSubmitHandler = () => {
-    if (userLogin === login && userPassword === password) {
-      dispatch(loggingin())
+  const dispatch = useAppDispatch()
+
+  const onSubmit: SubmitHandler<ICredentials> = ({username, password}) => {
+    if (username === usernameCred && password === passwordCred) {
+      dispatch(signIn())
+      dispatch(setShowSignIn(false))
       setError(false)
+      navigate('/profile')
     } else {
       setError(true)
     }
   }
 
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setError(false)
+    }, 2500)
+    return () => clearTimeout(timeout)
+  }, [onSubmit])
+  
   return (
-    <FormControl>
-      <TextField
-        id="standard-multiline-flexible"
-        label="Multiline"
-        multiline
-        maxRows={4}
-        variant="standard"
-        value={userLogin}
-        onChange={(event: React.ChangeEvent<HTMLInputElement>) => setUserLogin(event.target.value)}
-      />
-      <TextField
-        id="standard-multiline-flexible"
-        label="Multiline"
-        multiline
-        maxRows={4}
-        variant="standard"
-        value={userPassword}
-        onChange={(event: React.ChangeEvent<HTMLInputElement>) => setUserPassword(event.target.value)} 
-      />
-      {error && <FormHelperText>Incorrect login or password</FormHelperText>}
-      <Button variant="contained" onClick={onSubmitHandler}>Submit</Button>
-    </FormControl>
+    <div className={style.FormControlWrapper} onClick={() => dispatch(setShowSignIn(false))}>
+      <form className={style.FormControlContainer} onSubmit={handleSubmit(onSubmit)} onClick={(e) => e.stopPropagation()}>
+        <TextField
+          required
+          {...register('username')}
+          className={style.FormControlInput}
+          label="Login"
+          type="text"
+        />
+        <TextField
+          required
+          {...register('password')}
+          className={style.FormControlInput}
+          label="Password"
+          type="password"
+        />
+        {error ? 
+        <Alert severity="error" className={style.FormControlInput}>Incorrect login or password</Alert> : 
+        <div style={{width: '100%', height: '65px'}}></div>}
+        <Button className={style.FormControlInput} variant='contained' type='submit'>Submit</Button>
+      </form>
+    </div>
   )
 } 

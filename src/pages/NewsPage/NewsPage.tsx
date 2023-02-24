@@ -1,9 +1,13 @@
-import { Container } from "@mui/material"
-import { FC, useEffect } from "react"
-import { NewsPageItem } from "../../components/NewsPageItem/NewsPageItem"
-import { useAppDispatch, useAppSelector } from "../../store/store"
-import { fetchNews } from "../../store/thunks"
 import style from './NewsPage.module.scss'
+
+import { FC, useEffect } from "react"
+
+import { fetchNews } from "../../store/thunks"
+import { useAppDispatch, useAppSelector } from "../../store/store"
+
+import { Container, TextField, Box } from "@mui/material"
+import { NewsPageItem } from "../../components/NewsPageItem/NewsPageItem"
+
 
 export const NewsPage: FC = (): JSX.Element => {
     const dispatch = useAppDispatch()
@@ -14,8 +18,11 @@ export const NewsPage: FC = (): JSX.Element => {
     }, [])
 
     return (
-        <Container className={style.Container}>
-            {news && news.map(post => <NewsPageItem key={post.id} {...post}/>)}
+        <Container>
+            <TextField placeholder="Enter keywords" variant="standard" className={style.SearchInput}/>
+            <Box className={style.Container}>
+                {news && news.map(post => <NewsPageItem key={post.id} {...post} />)}
+            </Box>
         </Container>
     )
 }

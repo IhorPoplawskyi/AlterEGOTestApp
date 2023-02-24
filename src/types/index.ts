@@ -1,6 +1,11 @@
-export interface Credentials {
-  admin: string
+export interface ICredentials {
+  username: string
   password: string
+}
+
+export interface INavItems {
+  name: string
+  path: string
 }
 
 export interface INews {

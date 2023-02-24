@@ -1,25 +1,45 @@
-$sizes: ("xs":0px, "sm":600px, "md":900px, "lg":1200px, "xl":1536px);
+//default classes
+
+.marginTopBottom {
+  margin: 20px 0px !important;
+}
+
+.textAlignCenter {
+  text-align: center !important;
+}
+
+//styles
+
+.Container {
+  display: flex !important;
+  margin-bottom: 80px !important;
+}
 
 .AppBar {
-  background-color: #e1b382 !important
+  background-color: orange !important
 }
 
-.TypographyLargeRes {
-  margin-right: 2px !important;
-  font-family: monospace !important;
-  font-weight: 700 !important;
-  letter-spacing: .1rem !important;
-  @media screen and (max-width: 900px) {
-    display: none;
+.IconButton {
+  margin-right: 20px !important;
+}
+
+.NavItems {
+  color: white !important;
+}
+
+@media only screen and (min-width: 600px) {
+  .IconButton {
+    display: none !important;
   }
 }
 
-.TypographySmallRes {
-  margin-right: 2px !important;
-  font-family: monospace !important;
-  font-weight: 700 !important;
-  letter-spacing: .1rem !important;
-  @media screen and (min-width: 900px) {
-    display: none;
+@media only screen and (max-width: 600px) {
+  .NavItems {
+    display: none !important;
   }
 }
+
+.SiteName {
+  flex-grow: 1 !important;
+}
+
