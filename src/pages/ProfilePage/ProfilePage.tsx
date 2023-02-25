@@ -12,7 +12,7 @@ export const ProfilePage: FC = (): JSX.Element => {
         if (logged === false) {
             navigate('/')
         }
-    }, [logged])
+    }, [logged, navigate])
 
     return (
         <>

@@ -12,6 +12,7 @@ import { setShowSignIn } from "../../store/profilePageSlice";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 
 import { Box, Typography, CssBaseline, AppBar, Toolbar, IconButton, Button, Drawer } from "@mui/material";
+import { useTranslation } from 'react-i18next';
 
 export const Header: FC = (): JSX.Element => {
   const logged = useAppSelector(state => state.profilePageSlice.logged)
@@ -25,6 +26,12 @@ export const Header: FC = (): JSX.Element => {
   const navigate = useNavigate()
 
   const dispatch = useAppDispatch()
+
+  const { t, i18n } = useTranslation()
+
+  const changeLanguage = (language: string) => {
+    i18n.changeLanguage(language)
+  }
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState)
@@ -43,10 +50,12 @@ export const Header: FC = (): JSX.Element => {
             <Typography variant="h6" className={style.SiteName}>
               The Worldwide Post
             </Typography>
+            <div style={{margin: 2, cursor: 'pointer'}} onClick={() => changeLanguage('en')}>EN</div>
+            <div style={{margin: 2, cursor: 'pointer'}} onClick={() => changeLanguage('ua')}>UA</div>
             <Box className={style.NavItems}>
               {navItems.map((item) => (
                 <Button onClick={() => navigate(item.path)} key={item.name} className={style.NavItems} >
-                  {item.name}
+                  {t(item.name)}
                 </Button>
               ))}
               {logged ?
