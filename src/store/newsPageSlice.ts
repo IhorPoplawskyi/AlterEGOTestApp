@@ -33,6 +33,10 @@ const newsPageSlice = createSlice({
     setOffset(state, action: PayloadAction<number>) {
       state.offset = action.payload
     },
+    deleteArticle(state, action: PayloadAction<number>) {
+      state.news = state.news.filter(article => article.id !== action.payload)
+      state.totalCount = state.totalCount - 1
+    }
   },
   extraReducers:(builder) => {
     builder.addCase(fetchNews.pending, (state) => {
@@ -54,6 +58,7 @@ const newsPageSlice = createSlice({
 export const {
   setSearchTerm,
   setOffset,
+  deleteArticle,
 } = newsPageSlice.actions
 
 export default newsPageSlice.reducer;

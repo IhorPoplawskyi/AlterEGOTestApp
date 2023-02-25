@@ -1,9 +1,14 @@
+import ua from './ua.png'
+import uk from './uk.png'
+
 import style from './Header.module.scss'
 import MenuIcon from '@mui/icons-material/Menu';
 
 import { FC, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
+
+import { useTranslation } from 'react-i18next';
 
 import { MyDrawer } from "./MyDrawer";
 import { LoginForm } from "../LoginForm/LoginForm";
@@ -12,10 +17,6 @@ import { setShowSignIn } from "../../store/profilePageSlice";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 
 import { Box, Typography, CssBaseline, AppBar, Toolbar, IconButton, Button, Drawer } from "@mui/material";
-import { useTranslation } from 'react-i18next';
-
-import ua from './ua.png'
-import uk from './uk.png'
 
 export const Header: FC = (): JSX.Element => {
   const logged = useAppSelector(state => state.profilePageSlice.logged)
@@ -51,10 +52,12 @@ export const Header: FC = (): JSX.Element => {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" className={style.SiteName}>
-              The Worldwide Post
+              The Telegraph
             </Typography>
-            <Box component='img' src={uk} onClick={() => changeLanguage('en')} />
-            <Box component='img' src={ua} onClick={() => changeLanguage('ua')} />
+            <Box className={style.LangContainer}>
+              <Box component='img' src={uk} onClick={() => changeLanguage('en')} />
+              <Box component='img' src={ua} onClick={() => changeLanguage('ua')} />
+            </Box>
             <Box className={style.NavItems}>
               {navItems.map((item) => (
                 <Button onClick={() => navigate(item.path)} key={item.name} className={style.NavItems} >
@@ -62,8 +65,8 @@ export const Header: FC = (): JSX.Element => {
                 </Button>
               ))}
               {logged ?
-                <Button onClick={() => navigate('/profile')}>{t('Profile')}</Button> :
-                <Button onClick={() => dispatch(setShowSignIn(!showSignIn))}>{t('Sign in')}</Button>
+                <Button className={style.NavItems} onClick={() => navigate('/profile')}>{t('Profile')}</Button> :
+                <Button className={style.NavItems} onClick={() => dispatch(setShowSignIn(!showSignIn))}>{t('Sign in')}</Button>
               }
             </Box>
           </Toolbar>
@@ -83,7 +86,7 @@ export const Header: FC = (): JSX.Element => {
               logged={logged}
               showSignIn={showSignIn} 
               navigate={navigate} 
-              handleDrawerToggle={handleDrawerToggle} 
+              handleDrawerToggle={handleDrawerToggle}
               />
           </Drawer>
         </Box>
