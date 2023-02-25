@@ -14,6 +14,9 @@ import { useAppDispatch, useAppSelector } from "../../store/store";
 import { Box, Typography, CssBaseline, AppBar, Toolbar, IconButton, Button, Drawer } from "@mui/material";
 import { useTranslation } from 'react-i18next';
 
+import ua from './ua.png'
+import uk from './uk.png'
+
 export const Header: FC = (): JSX.Element => {
   const logged = useAppSelector(state => state.profilePageSlice.logged)
 
@@ -50,8 +53,8 @@ export const Header: FC = (): JSX.Element => {
             <Typography variant="h6" className={style.SiteName}>
               The Worldwide Post
             </Typography>
-            <div style={{margin: 2, cursor: 'pointer'}} onClick={() => changeLanguage('en')}>EN</div>
-            <div style={{margin: 2, cursor: 'pointer'}} onClick={() => changeLanguage('ua')}>UA</div>
+            <Box component='img' src={uk} onClick={() => changeLanguage('en')} />
+            <Box component='img' src={ua} onClick={() => changeLanguage('ua')} />
             <Box className={style.NavItems}>
               {navItems.map((item) => (
                 <Button onClick={() => navigate(item.path)} key={item.name} className={style.NavItems} >
@@ -59,8 +62,8 @@ export const Header: FC = (): JSX.Element => {
                 </Button>
               ))}
               {logged ?
-                <Button onClick={() => navigate('/profile')}>Profile</Button> :
-                <Button onClick={() => dispatch(setShowSignIn(!showSignIn))}>Sign in</Button>
+                <Button onClick={() => navigate('/profile')}>{t('Profile')}</Button> :
+                <Button onClick={() => dispatch(setShowSignIn(!showSignIn))}>{t('Sign in')}</Button>
               }
             </Box>
           </Toolbar>
