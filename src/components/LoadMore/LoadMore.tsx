@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC } from "react";
 
 import { Button } from "@mui/material/";
 
@@ -7,10 +7,7 @@ interface LoadMoreProps {
 }
 
 export const LoadMore: FC<LoadMoreProps> = ({ onClick }): JSX.Element => (
-    <Button
-      variant="outlined"
-      onClick={onClick}
-    >
-      Load More
-    </Button>
+  <Button variant="outlined" onClick={onClick}>
+    Load More
+  </Button>
 );

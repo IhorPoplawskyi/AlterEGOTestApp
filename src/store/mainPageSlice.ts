@@ -1,23 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface InitState {
+interface InitState {}
 
-}
-
-const InitState: InitState = {
-
-}
+const InitState: InitState = {};
 
 const mainPageSlice = createSlice({
-  name: 'mainPageSlice',
+  name: "mainPageSlice",
   initialState: InitState,
-  reducers: {
+  reducers: {},
+});
 
-  }
-})
-
-export const {
-
-} = mainPageSlice.actions
+export const {} = mainPageSlice.actions;
 
 export default mainPageSlice.reducer;

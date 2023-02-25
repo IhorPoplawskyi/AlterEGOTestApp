@@ -1,11 +1,11 @@
 export interface ICredentials {
-  username: string
-  password: string
+  username: string;
+  password: string;
 }
 
 export interface INavItems {
-  name: string
-  path: string
+  name: string;
+  path: string;
 }
 
 export interface INews {

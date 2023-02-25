@@ -1,53 +1,52 @@
 .FormControlWrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 99999999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999999;
 }
 
 .FormControlContainer {
-    display: flex;
-    flex-direction: column;
-    min-height: 35vh;
-    border-radius: 7px;
-    padding: 30px !important;
-    background: rgb(245, 243, 243) !important;
+  display: flex;
+  flex-direction: column;
+  min-height: 35vh;
+  border-radius: 7px;
+  padding: 30px !important;
+  background: rgb(245, 243, 243) !important;
 }
 
 .FormControlInput {
-    margin-top: 15px !important;
+  margin-top: 15px !important;
 }
 
-
 @media only screen and (max-width: 600px) {
-    .FormControlContainer {
-        width: 90%;
-    }
-    .FormControlInput {
-        font-size: 10px !important;
-    }
+  .FormControlContainer {
+    width: 90%;
+  }
+  .FormControlInput {
+    font-size: 10px !important;
+  }
 }
 
 @media only screen and (min-width: 600px) {
-    .FormControlContainer {
-        width: 70%;
-    }
+  .FormControlContainer {
+    width: 70%;
+  }
 }
 
 @media only screen and (min-width: 768px) {
-    .FormControlContainer {
-        width: 60%;
-    }
+  .FormControlContainer {
+    width: 60%;
+  }
 }
 
 @media only screen and (min-width: 992px) {
-    .FormControlContainer {
-        width: 35%;
-    }
+  .FormControlContainer {
+    width: 35%;
+  }
 }
