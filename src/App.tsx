@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { Header } from "./components/Header/Header";
-import { HomePage } from "./pages/HomePage/HomePage";
-import { NewsPage } from "./pages/NewsPage/NewsPage";
-import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
+
+import { Header } from './components'
+import { HomePage, ProfilePage, NewsPage } from "./pages"
+
 import { PrivateRoute } from './utils/PrivateRoute'
 
 export const App: FC = (): JSX.Element => {

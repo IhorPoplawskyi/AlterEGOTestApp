@@ -9,7 +9,7 @@ interface InitState {
   filter: string;
   searchTerm: string;
   totalCount: number | null;
-  status: "init" | "loading" | "success" | "error";
+  status: "init" | "loading" | "success" | "error" | "not found";
 }
 
 const InitState: InitState = {
@@ -50,8 +50,12 @@ const newsPageSlice = createSlice({
     builder.addCase(
       fetchNews.fulfilled,
       (state, action: PayloadAction<INews[]>) => {
-        state.news = [...state.news, ...action.payload];
-        state.status = "success";
+        if (action.payload.length === 0) {
+          state.status = 'not found'
+        } else {
+          state.news = [...state.news, ...action.payload];
+          state.status = "success";
+        }
       }
     );
     builder.addCase(

@@ -1,8 +1,8 @@
 import style from "./LoginForm.module.scss";
-import { TextField, Button, Alert } from "@mui/material";
+import { TextField, Button, Alert, Box } from "@mui/material";
 
+import { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FC, useEffect, useState } from "react";
 
 import { ICredentials } from "../../types/index";
 
@@ -12,6 +12,10 @@ import { useAppDispatch, useAppSelector } from "../../store/store";
 import { signIn, setShowSignIn } from "../../store/profilePageSlice";
 
 export const LoginForm: FC = (): JSX.Element => {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const [error, setError] = useState<boolean>(false);
   const { register, handleSubmit } = useForm<ICredentials>({ mode: "onBlur" });
 
   const usernameCred = useAppSelector(
@@ -21,12 +25,6 @@ export const LoginForm: FC = (): JSX.Element => {
     (state) => state.profilePageSlice.password
   );
 
-  const [error, setError] = useState<boolean>(false);
-
-  const navigate = useNavigate();
-
-  const dispatch = useAppDispatch();
-
   const onSubmit: SubmitHandler<ICredentials> = ({ username, password }) => {
     if (username === usernameCred && password === passwordCred) {
       dispatch(signIn());
@@ -34,26 +32,21 @@ export const LoginForm: FC = (): JSX.Element => {
       setError(false);
       navigate("/profile");
     } else {
-      setError(true);
+      setError(true)
     }
   };
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setError(false);
-    }, 2500);
-    return () => clearTimeout(timeout);
-  }, [onSubmit]);
-
   return (
-    <div
+    <Box
       className={style.FormControlWrapper}
       onClick={() => dispatch(setShowSignIn(false))}
     >
-      <form
+      <Box
+        component='form'
         className={style.FormControlContainer}
         onSubmit={handleSubmit(onSubmit)}
-        onClick={(e) => e.stopPropagation()}
+        onClick={(e: any) => e.stopPropagation()}
+        onChange={() => setError(false)}
       >
         <TextField
           required
@@ -74,7 +67,7 @@ export const LoginForm: FC = (): JSX.Element => {
             Incorrect login or password
           </Alert>
         ) : (
-          <div style={{ width: "100%", height: "65px" }}></div>
+          <Box component='div' className={style.ErrorPlug}/>
         )}
         <Button
           className={style.FormControlInput}
@@ -83,7 +76,7 @@ export const LoginForm: FC = (): JSX.Element => {
         >
           Submit
         </Button>
-      </form>
-    </div>
+      </Box>
+    </Box>
   );
 };

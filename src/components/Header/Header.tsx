@@ -5,13 +5,10 @@ import style from "./Header.module.scss";
 import MenuIcon from "@mui/icons-material/Menu";
 
 import { FC, useState } from "react";
-
 import { useNavigate } from "react-router-dom";
-
 import { useTranslation } from "react-i18next";
 
-import { MyDrawer } from "./MyDrawer";
-import { LoginForm } from "../LoginForm/LoginForm";
+import { MyDrawer, LoginForm, NavItems } from './../../components'
 
 import { setShowSignIn } from "../../store/profilePageSlice";
 import { useAppDispatch, useAppSelector } from "../../store/store";
@@ -23,47 +20,46 @@ import {
   AppBar,
   Toolbar,
   IconButton,
-  Button,
   Drawer,
 } from "@mui/material";
 
+const navItems = [
+  { name: "Home", path: "/" },
+  { name: "News", path: "/news" },
+];
+
 export const Header: FC = (): JSX.Element => {
-  const logged = useAppSelector((state) => state.profilePageSlice.logged);
-
-  const showSignIn = useAppSelector(
-    (state) => state.profilePageSlice.showSignIn
-  );
-
-  const navItems = [
-    { name: "Home", path: "/" },
-    { name: "News", path: "/news" },
-  ];
-
-  const [mobileOpen, setMobileOpen] = useState<boolean>(false);
-
   const navigate = useNavigate();
-
   const dispatch = useAppDispatch();
 
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
+  const [mobileOpen, setMobileOpen] = useState<boolean>(false);
+
+  const logged = useAppSelector((state) => state.profilePageSlice.logged);
+  const showSignIn = useAppSelector((state) => state.profilePageSlice.showSignIn);
 
   const changeLanguage = (language: string) => {
     i18n.changeLanguage(language);
   };
 
-  const handleDrawerToggle = () => {
+  const onDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
+
+  const onShowSignInToogle = () => {
+    dispatch(setShowSignIn(!showSignIn))
+  }
 
   return (
     <>
       {showSignIn && <LoginForm />}
+
       <Box className={style.Container}>
         <CssBaseline />
         <AppBar component="nav" position="fixed" className={style.AppBar}>
           <Toolbar>
             <IconButton
-              onClick={handleDrawerToggle}
+              onClick={onDrawerToggle}
               className={style.IconButton}
             >
               <MenuIcon />
@@ -83,38 +79,18 @@ export const Header: FC = (): JSX.Element => {
                 onClick={() => changeLanguage("ua")}
               />
             </Box>
-            <Box className={style.NavItems}>
-              {navItems.map((item) => (
-                <Button
-                  onClick={() => navigate(item.path)}
-                  key={item.name}
-                  className={style.NavItems}
-                >
-                  {t(item.name)}
-                </Button>
-              ))}
-              {logged ? (
-                <Button
-                  className={style.NavItems}
-                  onClick={() => navigate("/profile")}
-                >
-                  {t("Profile")}
-                </Button>
-              ) : (
-                <Button
-                  className={style.NavItems}
-                  onClick={() => dispatch(setShowSignIn(!showSignIn))}
-                >
-                  {t("Sign in")}
-                </Button>
-              )}
-            </Box>
+            <NavItems 
+              navItems={navItems} 
+              logged={logged} 
+              navigate={navigate} 
+              onShowSignInToogle={onShowSignInToogle}
+            />
           </Toolbar>
         </AppBar>
         <Box component="nav">
           <Drawer
             open={mobileOpen}
-            onClose={handleDrawerToggle}
+            onClose={onDrawerToggle}
             ModalProps={{ keepMounted: true }}
             sx={{
               display: { xs: "block", sm: "none" },
@@ -124,9 +100,9 @@ export const Header: FC = (): JSX.Element => {
             <MyDrawer
               navItems={navItems}
               logged={logged}
-              showSignIn={showSignIn}
               navigate={navigate}
-              handleDrawerToggle={handleDrawerToggle}
+              onDrawerToggled={onDrawerToggle}
+              onShowSignInToogle={onShowSignInToogle}
             />
           </Drawer>
         </Box>

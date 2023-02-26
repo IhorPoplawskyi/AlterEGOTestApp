@@ -3,6 +3,7 @@
 }
 
 .Container {
+  position: relative;
   display: flex !important;
   flex-wrap: wrap;
   gap: 3%;
@@ -13,4 +14,10 @@
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
+}
+
+.Preloader {
+  position: absolute;
+  top: 20%;
+  left: 50%;
 }

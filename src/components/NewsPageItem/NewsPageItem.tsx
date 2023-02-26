@@ -1,14 +1,10 @@
 import calendar from "./calendar.png";
 
-import style from "./NewsPageItem.module.scss";
-
 import { FC } from "react";
 
 import { INews } from "../../types";
-import { useAppDispatch } from "../../store/store";
 
-import { deleteArticle } from "../../store/newsPageSlice";
-
+import style from "./NewsPageItem.module.scss";
 import {
   Card,
   CardMedia,
@@ -18,16 +14,21 @@ import {
   Button,
 } from "@mui/material";
 
-export const NewsPageItem: FC<INews> = ({
+interface INewsPageItem {
+  post: INews
+  onDeleteArticle: (id: number) => void
+}
+
+export const NewsPageItem: FC<INewsPageItem> = ({post: {
   title,
   imageUrl,
   summary,
   publishedAt,
   id,
+}, onDeleteArticle
 }): JSX.Element => {
   
   const trimmedPublisedAt = publishedAt.slice(0, 10);
-  const dispatch = useAppDispatch();
 
   return (
     <Card className={style.Card}>
@@ -55,7 +56,7 @@ export const NewsPageItem: FC<INews> = ({
         </Typography>
       </CardContent>
       <CardActions>
-        <Button onClick={() => dispatch(deleteArticle(id))} size="small">
+        <Button onClick={() => onDeleteArticle(id)} size="small">
           Delete article
         </Button>
       </CardActions>

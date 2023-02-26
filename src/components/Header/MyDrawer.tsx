@@ -9,37 +9,30 @@ import {
   ListItemButton,
   ListItemText,
 } from "@mui/material";
-
-import { INavItems } from "../../types";
-import { useAppDispatch } from "../../store/store";
-import { setShowSignIn } from "../../store/profilePageSlice";
-
-// webpack aliases +(tsconfig)
-// import { setShowSignIn } from "@store/profilePageSlice";
-
 import style from "./Header.module.scss";
 
-interface props {
+import { INavItems } from "../../types";
+
+interface MyDrawerProps {
   navItems: INavItems[];
   logged: boolean;
-  showSignIn: boolean;
   navigate: (path: string) => void;
-  handleDrawerToggle: () => void;
-  // onDrawerToggled: () => void;
+  onDrawerToggled: () => void;
+  onShowSignInToogle: () => void;
 }
 
-export const MyDrawer: FC<props> = ({
+export const MyDrawer: FC<MyDrawerProps> = ({
   navItems,
   logged,
-  showSignIn,
   navigate,
-  handleDrawerToggle,
+  onDrawerToggled,
+  onShowSignInToogle,
 }): JSX.Element => {
-  const dispatch = useAppDispatch();
+  
   const { t } = useTranslation();
 
   return (
-    <Box onClick={handleDrawerToggle} className={style.textAlignCenter}>
+    <Box onClick={onDrawerToggled} className={style.textAlignCenter}>
       <Typography variant="h6" className={style.marginTopBottom}>
         The Challenger
       </Typography>
@@ -67,7 +60,7 @@ export const MyDrawer: FC<props> = ({
           ) : (
             <ListItemButton
               className={style.textAlignCenter}
-              onClick={() => dispatch(setShowSignIn(!showSignIn))}
+              onClick={onShowSignInToogle}
             >
               <ListItemText primary={t("Sign in")} />
             </ListItemButton>
@@ -77,12 +70,3 @@ export const MyDrawer: FC<props> = ({
     </Box>
   );
 };
-
-
-// NotificationModal + NotificationItem
-
-// store/notification (slice, thunk, ) + Notifications (badge + NotificationModal + store + api)
-
-// <MyPage><Notification /></MyPage>
-
-// components(props) // features // pages   => feature-sliced design

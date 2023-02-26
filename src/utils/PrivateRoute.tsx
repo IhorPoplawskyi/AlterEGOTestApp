@@ -1,6 +1,6 @@
 import React from 'react'
-import { useAppSelector } from '../store/store'
 import { Navigate } from 'react-router-dom'
+import { useAppSelector } from '../store/store'
 
 interface Props {
   component: React.ComponentType
