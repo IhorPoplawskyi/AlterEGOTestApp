@@ -1,12 +1,5 @@
-import style from "./Header.module.scss";
-
 import { FC } from "react";
-
-import { INavItems } from "../../types";
-
-import { useAppDispatch } from "../../store/store";
-import { setShowSignIn } from "../../store/profilePageSlice";
-
+import { useTranslation } from "react-i18next";
 import {
   Box,
   Typography,
@@ -16,7 +9,15 @@ import {
   ListItemButton,
   ListItemText,
 } from "@mui/material";
-import { useTranslation } from "react-i18next";
+
+import { INavItems } from "../../types";
+import { useAppDispatch } from "../../store/store";
+import { setShowSignIn } from "../../store/profilePageSlice";
+
+// webpack aliases +(tsconfig)
+// import { setShowSignIn } from "@store/profilePageSlice";
+
+import style from "./Header.module.scss";
 
 interface props {
   navItems: INavItems[];
@@ -24,6 +25,7 @@ interface props {
   showSignIn: boolean;
   navigate: (path: string) => void;
   handleDrawerToggle: () => void;
+  // onDrawerToggled: () => void;
 }
 
 export const MyDrawer: FC<props> = ({
@@ -75,3 +77,12 @@ export const MyDrawer: FC<props> = ({
     </Box>
   );
 };
+
+
+// NotificationModal + NotificationItem
+
+// store/notification (slice, thunk, ) + Notifications (badge + NotificationModal + store + api)
+
+// <MyPage><Notification /></MyPage>
+
+// components(props) // features // pages   => feature-sliced design

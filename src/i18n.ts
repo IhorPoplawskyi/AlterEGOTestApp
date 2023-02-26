@@ -10,7 +10,7 @@ i18next
   .use(LanguageDetector)
   .use(httpApi)
   .init({
-    fallbackLng: "ua",
+    fallbackLng: "en",
     interpolation: {
       escapeValue: false,
     },

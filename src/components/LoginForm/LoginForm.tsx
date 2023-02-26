@@ -1,17 +1,14 @@
 import style from "./LoginForm.module.scss";
-
-import { FC, useEffect, useState } from "react";
+import { TextField, Button, Alert } from "@mui/material";
 
 import { useNavigate } from "react-router-dom";
+import { FC, useEffect, useState } from "react";
 
 import { ICredentials } from "../../types/index";
 
 import { useForm, SubmitHandler } from "react-hook-form";
 
-import { TextField, Button, Alert } from "@mui/material";
-
 import { useAppDispatch, useAppSelector } from "../../store/store";
-
 import { signIn, setShowSignIn } from "../../store/profilePageSlice";
 
 export const LoginForm: FC = (): JSX.Element => {

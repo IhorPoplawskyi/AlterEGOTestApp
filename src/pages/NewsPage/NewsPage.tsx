@@ -11,8 +11,17 @@ import { setSearchTerm, setOffset } from "../../store/newsPageSlice";
 import { SearchBar } from "../../components/SearchBar/SearchBar";
 import { LoadMore } from "../../components/LoadMore/LoadMore";
 
+// import {} from './store'
+
+// @emotion
+
+// const containerStyles = (theme: Theme) => css`
+
+// `
+
 export const NewsPage: FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
+
   const news = useAppSelector((state) => state.newsPageSlice.news);
   const offset = useAppSelector((state) => state.newsPageSlice.offset);
   const searchTerm = useAppSelector((state) => state.newsPageSlice.searchTerm);

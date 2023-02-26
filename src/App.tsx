@@ -4,6 +4,7 @@ import { Header } from "./components/Header/Header";
 import { HomePage } from "./pages/HomePage/HomePage";
 import { NewsPage } from "./pages/NewsPage/NewsPage";
 import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
+import { PrivateRoute } from './utils/PrivateRoute'
 
 export const App: FC = (): JSX.Element => {
   return (
@@ -12,7 +13,7 @@ export const App: FC = (): JSX.Element => {
       <Routes>
         <Route path="*" element={<Navigate to="/" />} />
         <Route path="/" element={<HomePage />} />
-        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/profile" element={<PrivateRoute component={ProfilePage}/>} />
         <Route path="/news" element={<NewsPage />} />
       </Routes>
     </BrowserRouter>
