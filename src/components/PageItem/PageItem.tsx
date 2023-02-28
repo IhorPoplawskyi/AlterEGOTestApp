@@ -4,7 +4,7 @@ import { FC } from "react";
 
 import { INews } from "../../types";
 
-import style from "./NewsPageItem.module.scss";
+import style from "./PageItem.module.scss";
 import {
   Card,
   CardMedia,
@@ -15,19 +15,14 @@ import {
 } from "@mui/material";
 
 interface INewsPageItem {
-  post: INews
-  onDeleteArticle: (id: number) => void
+  post: INews;
+  onDeleteArticle: (id: number) => void;
 }
 
-export const NewsPageItem: FC<INewsPageItem> = ({post: {
-  title,
-  imageUrl,
-  summary,
-  publishedAt,
-  id,
-}, onDeleteArticle
+export const PageItem: FC<INewsPageItem> = ({
+  post: { title, imageUrl, summary, publishedAt, id },
+  onDeleteArticle,
 }): JSX.Element => {
-  
   const trimmedPublisedAt = publishedAt.slice(0, 10);
 
   return (

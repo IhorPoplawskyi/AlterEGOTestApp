@@ -2,14 +2,23 @@ import style from "./NewsPage.module.scss";
 
 import { FC, useCallback } from "react";
 
-import { LoadMore, SearchBar, NewsPageItem } from "../../components";
+import { LoadMore, SearchBar, PageItem } from "../../components";
 
 import { fetchNews, fetchTotalCount } from "../../store/thunks";
 import { useAppDispatch, useAppSelector } from "../../store/store";
-import { setSearchTerm, setOffset, deleteArticle } from "../../store/newsPageSlice";
+import {
+  setSearchTerm,
+  setOffset,
+  deleteArticle,
+} from "../../store/newsPageSlice";
 
-import { Container, Box, Alert, AlertTitle, CircularProgress } from "@mui/material";
-
+import {
+  Container,
+  Box,
+  Alert,
+  AlertTitle,
+  CircularProgress,
+} from "@mui/material";
 
 export const NewsPage: FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -31,14 +40,14 @@ export const NewsPage: FC = (): JSX.Element => {
     [dispatch, searchTerm]
   );
 
-  const loadMoreArticles = () => {
+  const loadMoreArticles = useCallback(() => {
     dispatch(setOffset(offset + 1));
     dispatch(fetchNews());
-  };
+  }, []);
 
   const onDeleteArticle = (id: number) => {
-    dispatch(deleteArticle(id))
-  }
+    dispatch(deleteArticle(id));
+  };
 
   const showLoadMoreBtn = totalCount === news.length;
 
@@ -46,17 +55,24 @@ export const NewsPage: FC = (): JSX.Element => {
     <Container className={style.Wrapper}>
       <SearchBar onSearch={onSearchHandler} value={searchTerm} />
       <Box className={style.Container}>
-        {news && news.map((post) => <NewsPageItem key={post.id} onDeleteArticle={onDeleteArticle} post={post} />)}
+        {news &&
+          news.map((post) => (
+            <PageItem
+              key={post.id}
+              onDeleteArticle={onDeleteArticle}
+              post={post}
+            />
+          ))}
       </Box>
 
-      {status === 'loading' && <CircularProgress className={style.Preloader}/>}
+      {status === "loading" && <CircularProgress className={style.Preloader} />}
 
-      {!showLoadMoreBtn && status === 'success' && (
+      {!showLoadMoreBtn && status === "success" && (
         <Box className={style.LoadMoreWrapper}>
           <LoadMore onClick={loadMoreArticles} />
         </Box>
       )}
-      {status === 'not found' && (
+      {status === "not found" && (
         <Alert severity="info">
           <AlertTitle>Nothing found</AlertTitle>
           We can't find anything by this keyword{" "}

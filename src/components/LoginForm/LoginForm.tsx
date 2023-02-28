@@ -32,7 +32,7 @@ export const LoginForm: FC = (): JSX.Element => {
       setError(false);
       navigate("/profile");
     } else {
-      setError(true)
+      setError(true);
     }
   };
 
@@ -42,7 +42,7 @@ export const LoginForm: FC = (): JSX.Element => {
       onClick={() => dispatch(setShowSignIn(false))}
     >
       <Box
-        component='form'
+        component="form"
         className={style.FormControlContainer}
         onSubmit={handleSubmit(onSubmit)}
         onClick={(e: any) => e.stopPropagation()}
@@ -67,7 +67,7 @@ export const LoginForm: FC = (): JSX.Element => {
             Incorrect login or password
           </Alert>
         ) : (
-          <Box component='div' className={style.ErrorPlug}/>
+          <Box component="div" className={style.ErrorPlug} />
         )}
         <Button
           className={style.FormControlInput}

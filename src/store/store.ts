@@ -1,6 +1,5 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import mainPageSlice from "./mainPageSlice";
 import newsPageSlice from "./newsPageSlice";
 import profilePageSlice from "./profilePageSlice";
 
@@ -14,7 +13,6 @@ function saveToLocalStorage(state: boolean) {
 }
 
 const rootReducer = combineReducers({
-  mainPageSlice,
   profilePageSlice,
   newsPageSlice,
 });

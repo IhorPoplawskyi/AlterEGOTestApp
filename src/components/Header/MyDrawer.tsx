@@ -28,7 +28,6 @@ export const MyDrawer: FC<MyDrawerProps> = ({
   onDrawerToggled,
   onShowSignInToogle,
 }): JSX.Element => {
-  
   const { t } = useTranslation();
 
   return (

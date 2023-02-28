@@ -51,7 +51,7 @@ const newsPageSlice = createSlice({
       fetchNews.fulfilled,
       (state, action: PayloadAction<INews[]>) => {
         if (action.payload.length === 0) {
-          state.status = 'not found'
+          state.status = "not found";
         } else {
           state.news = [...state.news, ...action.payload];
           state.status = "success";

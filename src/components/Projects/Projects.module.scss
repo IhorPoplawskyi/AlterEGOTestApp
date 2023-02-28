@@ -1,0 +1,40 @@
+.Container {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 3%;
+}
+
+.ProjectItem {
+  width: 30.3333%;
+  margin-bottom: 15px;
+}
+
+@media only screen and (max-width: 600px) {
+  .ProjectItem {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .ProjectItem {
+    width: 48.5%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .ProjectItem {
+    width: 48.5%;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .ProjectItem {
+    width: 48.5%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .ProjectItem {
+    width: 30.3333%;
+  }
+}

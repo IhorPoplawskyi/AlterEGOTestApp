@@ -1,33 +1,164 @@
 .Wrapper {
-    position: relative;
-    background-image: url('../../../public/home.webp');
-    background-size: cover;
-    background-position: center center;
-    background-attachment: fixed;
-    width: 100%;
-    height: 100vh;
+  position: relative;
+  background-image: url("../../../public/home.webp");
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  width: 100%;
+  height: 100vh;
 }
 
 .ShadowEffect {
-    position:absolute;
-    background:rgba(0,0,0,.6);
-    height:100vh;
-    width:100%;
-    top:0;
-    left:0;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.7);
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  left: 0;
 }
 
 .Container {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 70vh;
+  margin-top: 80px;
+  display: flex !important;
+  height: 80vh;
+}
+
+.AuthorInfo {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+
+  img {
+    border-radius: 100%;
+  }
+}
+
+.AppInfo {
+  color: rgb(255, 255, 255);
+  height: 100%;
 }
 
 .Title {
-    border: 3px solid white;
-    color: rgb(255, 255, 255);
-    font-size: 44px !important;
-    font-weight: 900 !important;
+  font-weight: 900 !important;
+  margin: 50px 0px;
+}
+
+.InfoText {
+  margin-bottom: 200px !important;
+  font-size: 20px !important;
+}
+
+.ContactMeBtn {
+  background: #009999 !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .Title {
+    font-size: 18px;
+  }
+  .Container {
+    flex-direction: column;
+  }
+  .AuthorInfo {
+    width: 100%;
+    height: 40%;
+    img {
+      width: 150px;
+      height: 150px;
+    }
+  }
+  .AppInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 60%;
+  }
+  .InfoText {
+    margin-bottom: 0px !important;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .Title {
+    font-size: 18px;
+  }
+  .AuthorInfo {
+    width: 42%;
+    img {
+      width: 250px;
+      height: 250px;
+    }
+  }
+
+  .AppInfo {
+    width: 58%;
+  }
+  .InfoText {
+    font-size: 17px !important;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .Title {
+    font-size: 24px;
+  }
+  .AuthorInfo {
+    width: 42%;
+    img {
+      width: 300px;
+      height: 300px;
+    }
+  }
+  .AppInfo {
+    width: 58%;
+  }
+  .InfoText {
+    margin-bottom: 200px !important;
+    font-size: 20px !important;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .Title {
+    font-size: 30px;
+  }
+  .AuthorInfo {
+    width: 55%;
+    img {
+      width: 350px;
+      height: 350px;
+    }
+  }
+  .AppInfo {
+    width: 45%;
+  }
+  .InfoText {
+    margin-bottom: 200px !important;
+    font-size: 20px !important;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .Title {
+    font-size: 44px;
+  }
+  .AuthorInfo {
+    width: 55%;
+    img {
+      width: 380px;
+      height: 380px;
+    }
+  }
+  .AppInfo {
+    width: 45%;
+  }
+  .InfoText {
+    margin-bottom: 200px !important;
+    font-size: 20px !important;
+  }
 }

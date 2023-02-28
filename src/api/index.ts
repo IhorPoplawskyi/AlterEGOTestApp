@@ -1,4 +1,5 @@
 import queryString from "query-string";
+
 import { INews } from "../types";
 
 const articlesEndpoint = "https://api.spaceflightnewsapi.net/v3/articles";

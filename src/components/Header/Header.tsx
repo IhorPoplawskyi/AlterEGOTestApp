@@ -4,11 +4,11 @@ import uk from "./uk.png";
 import style from "./Header.module.scss";
 import MenuIcon from "@mui/icons-material/Menu";
 
-import { FC, useState } from "react";
+import { FC, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import { MyDrawer, LoginForm, NavItems } from './../../components'
+import { MyDrawer, LoginForm, NavItems } from "./../../components";
 
 import { setShowSignIn } from "../../store/profilePageSlice";
 import { useAppDispatch, useAppSelector } from "../../store/store";
@@ -36,19 +36,21 @@ export const Header: FC = (): JSX.Element => {
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
 
   const logged = useAppSelector((state) => state.profilePageSlice.logged);
-  const showSignIn = useAppSelector((state) => state.profilePageSlice.showSignIn);
+  const showSignIn = useAppSelector(
+    (state) => state.profilePageSlice.showSignIn
+  );
 
   const changeLanguage = (language: string) => {
     i18n.changeLanguage(language);
   };
 
-  const onDrawerToggle = () => {
+  const onDrawerToggle = useCallback(() => {
     setMobileOpen((prevState) => !prevState);
-  };
+  }, []);
 
-  const onShowSignInToogle = () => {
-    dispatch(setShowSignIn(!showSignIn))
-  }
+  const onShowSignInToogle = useCallback(() => {
+    dispatch(setShowSignIn(!showSignIn));
+  }, []);
 
   return (
     <>
@@ -58,10 +60,7 @@ export const Header: FC = (): JSX.Element => {
         <CssBaseline />
         <AppBar component="nav" position="fixed" className={style.AppBar}>
           <Toolbar>
-            <IconButton
-              onClick={onDrawerToggle}
-              className={style.IconButton}
-            >
+            <IconButton onClick={onDrawerToggle} className={style.IconButton}>
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" className={style.SiteName}>
@@ -71,18 +70,20 @@ export const Header: FC = (): JSX.Element => {
               <Box
                 component="img"
                 src={uk}
+                alt='en'
                 onClick={() => changeLanguage("en")}
               />
               <Box
                 component="img"
                 src={ua}
+                alt='ua'
                 onClick={() => changeLanguage("ua")}
               />
             </Box>
-            <NavItems 
-              navItems={navItems} 
-              logged={logged} 
-              navigate={navigate} 
+            <NavItems
+              navItems={navItems}
+              logged={logged}
+              navigate={navigate}
               onShowSignInToogle={onShowSignInToogle}
             />
           </Toolbar>

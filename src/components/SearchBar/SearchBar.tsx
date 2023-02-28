@@ -3,14 +3,15 @@ import style from "./SearchBar.module.scss";
 import useDebounce from "../../hooks/useDebounce";
 
 import { TextField } from "@mui/material";
+
 import { FC, ChangeEvent, useState, useEffect } from "react";
 
-interface SearchBarProps {
+interface ISearchBarProps {
   onSearch: (searchTerm: string) => void;
   value?: string;
 }
 
-export const SearchBar: FC<SearchBarProps> = ({
+export const SearchBar: FC<ISearchBarProps> = ({
   value = "",
   onSearch,
 }): JSX.Element => {
