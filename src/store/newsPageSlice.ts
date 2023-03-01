@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { INews } from "../types";
 import { fetchNews, fetchTotalCount } from "./thunks";
 
-interface InitState {
+interface IInitState {
   limit: number;
   offset: number;
   news: INews[];
@@ -12,7 +12,7 @@ interface InitState {
   status: "init" | "loading" | "success" | "error" | "not found";
 }
 
-const InitState: InitState = {
+const InitState: IInitState = {
   limit: 6,
   offset: 0,
   news: [],

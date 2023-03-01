@@ -50,7 +50,7 @@ export const Header: FC = (): JSX.Element => {
 
   const onShowSignInToogle = useCallback(() => {
     dispatch(setShowSignIn(!showSignIn));
-  }, []);
+  }, [dispatch, showSignIn]);
 
   return (
     <>

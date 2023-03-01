@@ -2,14 +2,14 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const loggedLS = localStorage.getItem("logged");
 
-interface InitState {
+interface IInitState {
   username: string;
   password: string;
   logged: boolean;
   showSignIn: boolean;
 }
 
-const InitState: InitState = {
+const InitState: IInitState = {
   username: "admin",
   password: "12345",
   logged: loggedLS === null ? false : JSON.parse(loggedLS),

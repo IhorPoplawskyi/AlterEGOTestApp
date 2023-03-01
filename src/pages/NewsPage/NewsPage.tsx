@@ -43,7 +43,7 @@ export const NewsPage: FC = (): JSX.Element => {
   const loadMoreArticles = useCallback(() => {
     dispatch(setOffset(offset + 1));
     dispatch(fetchNews());
-  }, []);
+  }, [dispatch ,offset]);
 
   const onDeleteArticle = (id: number) => {
     dispatch(deleteArticle(id));
