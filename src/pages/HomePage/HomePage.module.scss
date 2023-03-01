@@ -37,6 +37,8 @@
 }
 
 .AppInfo {
+  display: flex;
+  flex-direction: column;
   color: rgb(255, 255, 255);
   height: 100%;
 }
@@ -49,6 +51,7 @@
 .InfoText {
   margin-bottom: 200px !important;
   font-size: 20px !important;
+  flex-grow: 1 !important;
 }
 
 .ContactMeBtn {
@@ -80,6 +83,7 @@
   }
   .InfoText {
     margin-bottom: 0px !important;
+    flex-grow: 0 !important;
   }
 }
 
