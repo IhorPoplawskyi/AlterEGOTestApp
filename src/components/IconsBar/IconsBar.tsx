@@ -1,13 +1,12 @@
-import { FC } from "react";
-
-import { Box } from "@mui/material";
-
-import style from "./IconsBar.module.scss";
-
 import gmail from "./gmail.png";
 import github from "./github.png";
 import telegram from "./telegram.png";
 import linkedin from "./linkedin.png";
+
+import { FC } from "react";
+
+import { Box } from "@mui/material";
+import style from "./IconsBar.module.scss";
 
 export const IconsBar: FC = (): JSX.Element => {
   return (

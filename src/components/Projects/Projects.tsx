@@ -5,7 +5,6 @@ import steamStoreApp from "./steamStoreApp.png";
 import newsArticleApp from "./newsArticleApp.png";
 
 import style from "./Projects.module.scss";
-
 import {
   Card,
   CardActionArea,

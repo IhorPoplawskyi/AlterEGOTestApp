@@ -3,7 +3,7 @@ import avatar from "../../common/images/avatar.jpeg";
 
 import { FC } from "react";
 
-import { IconsBar } from "../../components/IconsBar/IconsBar";
+import { IconsBar } from "../../components";
 import { Box, Button, Container, Typography } from "@mui/material";
 
 export const HomePage: FC = (): JSX.Element => {

@@ -1,11 +1,10 @@
-import style from "./ProfilePage.module.scss";
-
 import road from "./road.jpeg";
 import location from "./location.png";
 import avatar from "../../common/images/avatar.jpeg";
 
 import { FC } from "react";
 
+import style from "./ProfilePage.module.scss";
 import { Box, Typography, Button } from "@mui/material";
 
 import { Projects } from "../../components/Projects/Projects";
