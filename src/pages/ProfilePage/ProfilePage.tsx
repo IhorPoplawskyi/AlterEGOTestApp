@@ -3,6 +3,7 @@ import location from "./location.png";
 import avatar from "../../common/images/avatar.jpeg";
 
 import { FC } from "react";
+import { useTranslation } from "react-i18next"; 
 
 import style from "./ProfilePage.module.scss";
 import { Box, Typography, Button } from "@mui/material";
@@ -15,6 +16,7 @@ import { signOut } from "../../store/profilePageSlice";
 
 export const ProfilePage: FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
 
   return (
     <Box className={style.Container}>
@@ -38,7 +40,7 @@ export const ProfilePage: FC = (): JSX.Element => {
           className={style.LogoutBtn}
           onClick={() => dispatch(signOut())}
         >
-          Log out
+          {t("Log out")}
         </Button>
       </Box>
       <Box className={style.Main}>

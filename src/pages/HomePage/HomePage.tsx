@@ -2,11 +2,14 @@ import style from "./HomePage.module.scss";
 import avatar from "../../common/images/avatar.jpeg";
 
 import { FC } from "react";
+import { useTranslation } from "react-i18next";
 
 import { IconsBar } from "../../components";
 import { Box, Button, Container, Typography } from "@mui/material";
 
 export const HomePage: FC = (): JSX.Element => {
+  const { t } = useTranslation();
+
   return (
     <Box className={style.Wrapper}>
       <Box className={style.ShadowEffect}>
@@ -27,7 +30,7 @@ export const HomePage: FC = (): JSX.Element => {
               href="https://t.me/Greg_vishki"
               target="_blank"
             >
-              Contact me
+              {t("Contact me")}
             </Button>
           </Box>
         </Container>

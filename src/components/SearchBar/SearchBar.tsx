@@ -2,6 +2,8 @@ import style from "./SearchBar.module.scss";
 
 import useDebounce from "../../hooks/useDebounce";
 
+import { useTranslation } from "react-i18next";
+
 import { TextField } from "@mui/material";
 
 import { FC, ChangeEvent, useState, useEffect } from "react";
@@ -15,6 +17,8 @@ export const SearchBar: FC<ISearchBarProps> = ({
   value = "",
   onSearch,
 }): JSX.Element => {
+  const { t } = useTranslation();
+
   const [searchTerm, setSearchTerm] = useState(value);
   const debouncedSearchTerm = useDebounce(searchTerm, 750);
 
@@ -31,7 +35,7 @@ export const SearchBar: FC<ISearchBarProps> = ({
   return (
     <TextField
       className={style.SearchInput}
-      placeholder="Enter keywords"
+      placeholder={t("Enter keywords")!}
       variant="standard"
       value={searchTerm}
       onChange={onChangeHandler}

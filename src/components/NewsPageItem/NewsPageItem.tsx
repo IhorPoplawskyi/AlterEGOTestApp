@@ -1,10 +1,10 @@
-import calendar from "./calendar.png";
-
 import { FC } from "react";
+import { useTranslation } from "react-i18next";
 
 import { INews } from "../../types";
 
-import style from "./PageItem.module.scss";
+import calendar from "./calendar.png";
+import style from "./NewsPageItem.module.scss";
 import {
   Card,
   CardMedia,
@@ -24,6 +24,7 @@ export const PageItem: FC<INewsPageItem> = ({
   onDeleteArticle,
 }): JSX.Element => {
   const trimmedPublisedAt = publishedAt.slice(0, 10);
+  const { t } = useTranslation();
 
   return (
     <Card className={style.Card}>
@@ -52,7 +53,7 @@ export const PageItem: FC<INewsPageItem> = ({
       </CardContent>
       <CardActions>
         <Button onClick={() => onDeleteArticle(id)} size="small">
-          Delete article
+          {t("Delete article")}
         </Button>
       </CardActions>
     </Card>
