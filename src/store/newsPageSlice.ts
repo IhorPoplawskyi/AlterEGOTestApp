@@ -52,6 +52,7 @@ const newsPageSlice = createSlice({
       (state, action: PayloadAction<INews[]>) => {
         if (action.payload.length === 0) {
           state.status = "not found";
+          state.news = [];
         } else {
           state.news = [...state.news, ...action.payload];
           state.status = "success";
