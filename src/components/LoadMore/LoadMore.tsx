@@ -12,7 +12,7 @@ export const LoadMore: FC<LoadMoreProps> = ({ onClick }): JSX.Element => {
 
   return (
     <Button variant="outlined" onClick={onClick}>
-      {t('Load more')}
+      {t("Load more")}
     </Button>
-  )
-}
+  );
+};

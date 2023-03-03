@@ -1,0 +1,19 @@
+.Button {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed !important;
+  bottom: 30px;
+  right: 25px;
+  z-index: 20;
+  border-radius: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    background: rgba(0, 0, 0, 0.7);
+  }
+}

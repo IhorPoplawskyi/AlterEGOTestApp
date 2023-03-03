@@ -8,4 +8,4 @@ export * from "./NewsPageItem/NewsPageItem";
 export * from "./SearchBar/SearchBar";
 export * from "./IconsBar/IconsBar";
 export * from "./Projects/Projects";
-
+export * from "./ScrollToTop/ScrollToTop";

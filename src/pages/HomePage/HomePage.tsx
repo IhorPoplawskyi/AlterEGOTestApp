@@ -23,7 +23,7 @@ export const HomePage: FC = (): JSX.Element => {
             <IconsBar />
           </Box>
           <Box className={style.AuthorInfo}>
-            <Box component="img" alt='avatar' src={avatar} />
+            <Box component="img" alt="avatar" src={avatar} />
             <Button
               variant="contained"
               className={style.ContactMeBtn}

@@ -3,7 +3,7 @@ import location from "./location.png";
 import avatar from "../../common/images/avatar.jpeg";
 
 import { FC } from "react";
-import { useTranslation } from "react-i18next"; 
+import { useTranslation } from "react-i18next";
 
 import style from "./ProfilePage.module.scss";
 import { Box, Typography, Button } from "@mui/material";
@@ -12,7 +12,6 @@ import { Projects } from "../../components/Projects/Projects";
 
 import { useAppDispatch } from "../../store/store";
 import { signOut } from "../../store/profilePageSlice";
-
 
 export const ProfilePage: FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -24,7 +23,12 @@ export const ProfilePage: FC = (): JSX.Element => {
         <Box component="img" alt="background" src={road} />
       </Box>
       <Box className={style.Header}>
-        <Box component="img" alt="avatar" src={avatar} className={style.Avatar} />
+        <Box
+          component="img"
+          alt="avatar"
+          src={avatar}
+          className={style.Avatar}
+        />
         <Box className={style.AboutMe}>
           <Typography className={style.Name}>Ihor Poplawskyi</Typography>
           <Typography className={style.WorkPosition}>

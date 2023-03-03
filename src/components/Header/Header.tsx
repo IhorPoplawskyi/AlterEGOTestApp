@@ -70,13 +70,13 @@ export const Header: FC = (): JSX.Element => {
               <Box
                 component="img"
                 src={uk}
-                alt='en'
+                alt="en"
                 onClick={() => changeLanguage("en")}
               />
               <Box
                 component="img"
                 src={ua}
-                alt='ua'
+                alt="ua"
                 onClick={() => changeLanguage("ua")}
               />
             </Box>

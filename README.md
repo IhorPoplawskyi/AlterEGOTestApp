@@ -1,6 +1,7 @@
 # Alter Ego Test app
 
 This is the test app for Alter Ego IT-company, This app meets all the requirements of the test:
+
 - ##### Three pages: HOME | NEWS | PROFILE
 - ##### Load more news button in news page with flexible visibility, each news post can be deleted
 - ##### Profile page can't be reached without authentification
@@ -19,8 +20,8 @@ This is the test app for Alter Ego IT-company, This app meets all the requiremen
 - #### `Redux-Toolkit`
 - #### `Material-UI`
 - #### `React-hook-form`
- 
- ## Features
+
+## Features
 
 - ##### preloader
 - ##### useDebounce custom hook on search bar
