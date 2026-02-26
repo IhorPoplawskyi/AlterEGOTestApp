@@ -2,12 +2,12 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { getNews, getTotalCount } from "./../api/index";
 
-import { INews } from "../types";
+import { INewsResponse } from "../types";
 import { RootState } from "./store";
 
 export const fetchNews = createAsyncThunk(
   "newsPageSlice/fetchNews",
-  async (_args, thunkAPI): Promise<INews[]> => {
+  async (_args, thunkAPI): Promise<INewsResponse> => {
     const state = thunkAPI.getState() as RootState;
     const { filter, searchTerm, limit, offset } = state.newsPageSlice;
 

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { INews } from "../types";
+import { INews, INewsResponse } from "../types";
 import { fetchNews, fetchTotalCount } from "./thunks";
 
 interface IInitState {
@@ -49,12 +49,12 @@ const newsPageSlice = createSlice({
     });
     builder.addCase(
       fetchNews.fulfilled,
-      (state, action: PayloadAction<INews[]>) => {
-        if (action.payload.length === 0) {
+      (state, action: PayloadAction<INewsResponse>) => {
+        if (action.payload.results.length === 0) {
           state.status = "not found";
           state.news = [];
         } else {
-          state.news = [...state.news, ...action.payload];
+          state.news = [...state.news, ...action.payload.results];
           state.status = "success";
         }
       }

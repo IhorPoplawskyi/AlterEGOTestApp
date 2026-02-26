@@ -13,8 +13,13 @@ export interface INews {
   featured: boolean;
   title: string;
   url: string;
-  imageUrl: string;
+  image_url: string;
   newsSite: string;
   summary: string;
   publishedAt: string;
+}
+
+export interface INewsResponse {
+  results: INews[];
+  total: number;
 }

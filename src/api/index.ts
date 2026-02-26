@@ -1,19 +1,19 @@
 import queryString from "query-string";
 
-import { INews } from "../types";
+import { INewsResponse } from "../types";
 
-const articlesEndpoint = "https://api.spaceflightnewsapi.net/v3/articles";
+const articlesEndpoint = "https://api.spaceflightnewsapi.net/v4/articles";
 
 export const getNews = async (
   filter: string,
   searchTerm: string,
   limit: number,
   offset: number
-): Promise<INews[]> => {
+): Promise<INewsResponse> => {
   const query = queryString.stringify({
     [filter]: searchTerm.split(" "),
-    _limit: limit,
-    _start: offset * limit,
+    limit: limit,
+    offset: offset * limit,
   });
 
   const response = await fetch(`${articlesEndpoint}?${query}`);
