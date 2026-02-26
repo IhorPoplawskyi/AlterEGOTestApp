@@ -1,24 +1,24 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { INews, INewsResponse } from "../types";
-import { fetchNews, fetchTotalCount } from "./thunks";
+import { fetchNews } from "./thunks";
 
 interface IInitState {
   limit: number;
   offset: number;
+  count: number | null;
   news: INews[];
   filter: string;
   searchTerm: string;
-  totalCount: number | null;
   status: "init" | "loading" | "success" | "error" | "not found";
 }
 
 const InitState: IInitState = {
   limit: 6,
   offset: 0,
+  count: null,
   news: [],
   filter: "title_contains",
   searchTerm: "",
-  totalCount: null,
   status: "init",
 };
 
@@ -37,7 +37,7 @@ const newsPageSlice = createSlice({
       state.news = state.news.filter(
         (article) => article.id !== action.payload
       );
-      state.totalCount = state.totalCount! - 1;
+      state.count = state.count! - 1;
     },
   },
   extraReducers: (builder) => {
@@ -55,14 +55,9 @@ const newsPageSlice = createSlice({
           state.news = [];
         } else {
           state.news = [...state.news, ...action.payload.results];
+          state.count = action.payload.count;
           state.status = "success";
         }
-      }
-    );
-    builder.addCase(
-      fetchTotalCount.fulfilled,
-      (state, action: PayloadAction<number>) => {
-        state.totalCount = action.payload;
       }
     );
   },

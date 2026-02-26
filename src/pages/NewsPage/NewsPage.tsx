@@ -4,7 +4,7 @@ import { FC, useCallback, useEffect, useState } from "react";
 
 import { LoadMore, SearchBar, PageItem, ScrollToTop } from "../../components";
 
-import { fetchNews, fetchTotalCount } from "../../store/thunks";
+import { fetchNews } from "../../store/thunks";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import {
   setSearchTerm,
@@ -28,7 +28,7 @@ export const NewsPage: FC = (): JSX.Element => {
   const offset = useAppSelector((state) => state.newsPageSlice.offset);
   const status = useAppSelector((state) => state.newsPageSlice.status);
   const searchTerm = useAppSelector((state) => state.newsPageSlice.searchTerm);
-  const totalCount = useAppSelector((state) => state.newsPageSlice.totalCount);
+  const totalCount = useAppSelector((state) => state.newsPageSlice.count);
 
   const showLoadMoreBtn = totalCount === news.length;
 
@@ -37,7 +37,6 @@ export const NewsPage: FC = (): JSX.Element => {
       if (value && value === searchTerm) return;
       dispatch(setOffset(0));
       dispatch(setSearchTerm(value));
-      dispatch(fetchTotalCount());
       dispatch(fetchNews());
     },
     [dispatch, searchTerm]

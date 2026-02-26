@@ -19,13 +19,3 @@ export const getNews = async (
   const response = await fetch(`${articlesEndpoint}?${query}`);
   return response.json();
 };
-
-export const getTotalCount = async (
-  filter: string,
-  searchTerm: string
-): Promise<number> => {
-  const query = queryString.stringify({ [filter]: searchTerm.split(" ") });
-
-  const response = await fetch(`${articlesEndpoint}/count?${query}`);
-  return response.json();
-};

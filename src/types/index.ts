@@ -16,10 +16,10 @@ export interface INews {
   image_url: string;
   newsSite: string;
   summary: string;
-  publishedAt: string;
+  published_at: string;
 }
 
 export interface INewsResponse {
   results: INews[];
-  total: number;
+  count: number;
 }

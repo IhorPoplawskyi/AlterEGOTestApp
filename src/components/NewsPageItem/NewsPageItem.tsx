@@ -20,10 +20,10 @@ interface INewsPageItem {
 }
 
 export const PageItem: FC<INewsPageItem> = ({
-  post: { title, image_url, summary, publishedAt, id },
+  post: { title, image_url, summary, published_at, id },
   onDeleteArticle,
 }): JSX.Element => {
-  //const trimmedPublisedAt = publishedAt.slice(0, 10);
+  const trimmedPublisedAt = published_at.slice(0, 10);
   const { t } = useTranslation();
 
   return (
@@ -42,7 +42,7 @@ export const PageItem: FC<INewsPageItem> = ({
             alt="calendar"
             image={calendar}
           />
-          {/* {trimmedPublisedAt} */}
+          {trimmedPublisedAt}
         </Typography>
         <Typography gutterBottom variant="h5" component="div">
           {title}
